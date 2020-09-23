@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:include="public/head::head"></div>
+
+
+<ul class="list-group">
+    <li class="list-group-item"></li>
+    <li class="list-group-item" >姓名:<h th:text="${user.nickname}"></h></li>
+    <li class="list-group-item">上次登录时间:<h th:text="${user.getLastLoginDate()}"></h></li>
+    <li class="list-group-item">电话号码:<h th:text="${user.id}"></h></li>
+</ul>
+
+</body>
+</html>

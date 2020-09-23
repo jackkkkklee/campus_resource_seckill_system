@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- 使用thymeleaf，配置相应的 -->
+<html xmlns:th="http://www.thymeleaf.org">  <!-- th!!! 命名空间使用 -->
+<head>
+<meta charset="UTF-8"/><!--<meta charset="UTF-8" />  thymeleaf模板引擎默认是Template modes:HTML5解析的，所以解析比较严格。  -->
+<title>商品详情</title>
+	<!-- thymeleaf引入静态资源的方式，@加大括弧    "/" 代表static路径-->
+	<!-- jquery -->
+	<!-- <script type="text/javascript" th:src="@{/js/jequery.min.js}"></script> -->
+	<script type="text/javascript" th:src="@{/jquery-validation/lib/jquery-1.11.1.js}"></script>
+	<!-- bootstrap -->
+	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"/>
+	 -->
+	<link type="text/css" rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
+	<script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+	<div class="panel panel-default">
+		<div class="panel-heading">秒杀商品列表</div>
+		<table class="table" id="itemList">
+		<tr><td>商品名称</td><td>商品图片</td><td>库存数量</td><td>详情</td></tr>
+		<tr th:each="item,itemStat:${itemList}">
+			<td th:text="${item.itemName}"></td>
+			<td><img th:src="@{${item.itemImg}}" width="80" height="60"></img></td>
+			<td th:text="${item.stockCount}"></td>
+			<!-- <td><a th:href="'/item/to_detail/'+${item.id}">详情</a></td> -->
+			<!-- 直接请求静态页面 -->
+			<td><!--/*@thymesVar id="item" type=""*/-->
+			<a th:href="'/item_detail.htm?itemId='+${item.id}">详情</a></td>
+		</tr>
+		</table>
+	</div>
+</body>
+</html>

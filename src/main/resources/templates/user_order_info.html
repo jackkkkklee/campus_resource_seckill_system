@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">  <!-- th!!! 命名空间使用 -->
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<script type="text/javascript" th:src="@{/jquery-validation/lib/jquery-1.11.1.js}"></script>
+    <link type="text/css" rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
+    <script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>-->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:include="public/head::head"></div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">我的活动列表</div>
+    <table class="table" id="itemList">
+        <tr><td>活动名称</td><td>详情</td></tr>
+        <tr th:each="order,orderStat:${orderDetailList}">
+            <td th:text="${order.getItemVo().getItemName()}"></td>
+            <td th:text="${order.getItemVo().getItemDetail()}"></td>
+            <td><!--/*@thymesVar id="item" type=""*/-->
+                <a th:href="'/item_detail.htm?itemId='+${order.getItemVo().getId()}">详情</a></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
